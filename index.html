@@ -35,7 +35,7 @@
     <style>
         html { scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* 點狀地圖網格與漸層背景 */
+        /* 點狀地圖網格與漸層背景 (點點顏色加深為 #cbd5e1) */
         body { 
             font-family: 'Noto Sans TC', sans-serif; 
             color: #333; 
@@ -44,7 +44,7 @@
             background-image: 
                 radial-gradient(at 0% 0%, rgba(0, 180, 164, 0.08) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(255, 202, 24, 0.08) 0px, transparent 50%),
-                radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+                radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
             background-size: 100% 100%, 100% 100%, 28px 28px;
             background-attachment: fixed;
         }
@@ -64,6 +64,16 @@
         .image-container:hover img {
             transform: scale(1.03);
         }
+
+        /* 專屬的大幅度跳動動畫 */
+        @keyframes bigBounce {
+            0%, 100% { transform: translateY(-50%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+        .animate-big-bounce-1 { animation: bigBounce 2.5s infinite; }
+        .animate-big-bounce-2 { animation: bigBounce 2.5s infinite 0.5s; }
+        .animate-big-bounce-3 { animation: bigBounce 2.5s infinite 1s; }
+
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #00B4A4; border-radius: 4px; }
@@ -106,9 +116,9 @@
                  alt="台灣景點：九份、蘭嶼、烏來" 
                  class="w-full h-auto object-cover max-h-[70vh]"
                  onerror="this.src='https://images.unsplash.com/photo-1578330755913-c288d6b9743a?q=80&w=2000&auto=format&fit=crop'; this.alt='圖片載入失敗，顯示替代圖片';">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-            <div class="absolute bottom-6 right-8 text-white/90 text-sm font-bold tracking-wider drop-shadow-md hidden md:block">
-                📍 圖片景點：九份阿妹茶樓｜蘭嶼東清灣｜烏來瀑布纜車
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-6 right-8 text-white/95 text-lg font-bold tracking-wider drop-shadow-md hidden md:block">
+                📍 圖片景點：九份阿妹茶樓｜蘭嶼東清灣｜烏來瀑布纜車 (此圖片由AI生成)
             </div>
         </div>
     </section>
@@ -116,6 +126,7 @@
     <section id="features" class="py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-tripool font-bold tracking-wider text-sm uppercase mb-2 block">Why choose tripool charter service?</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">為什麼選擇 tripool 包車服務？</h2>
                 <div class="w-16 h-1 bg-tripool mx-auto rounded-full"></div>
             </div>
@@ -147,12 +158,12 @@
 
     <section id="destinations" class="pt-24 pb-12 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-right">
-                <div>
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 text-center md:text-left" data-aos="fade-right">
+                <div class="mb-4 md:mb-0">
                     <span class="text-tripool font-bold tracking-wider text-sm uppercase mb-2 block">Top Destinations</span>
                     <h2 class="text-3xl md:text-4xl font-bold text-dark">台灣絕美風景 推薦行程</h2>
                 </div>
-                <p class="text-gray-600 mt-4 md:mt-0 max-w-md md:text-right font-bold text-lg">
+                <p class="text-gray-600 md:text-right font-bold text-lg">
                     <span class="block">參考交通部觀光署資訊，精選三個台灣美景。</span>
                     <span class="block text-tripool">包車出遊，點到點直達，省去轉車煩惱！</span>
                 </p>
@@ -182,7 +193,7 @@
                 <div class="py-20 flex justify-center items-center opacity-80" data-aos="fade-in" data-aos-duration="1500">
                     <div class="w-full max-w-4xl border-t-[3px] border-dashed border-tripool/40 relative">
                         <div class="absolute left-0 top-0 -translate-y-1/2">
-                            <div class="bg-white/90 backdrop-blur-md px-4 py-1 text-tripool animate-[bounce_3s_infinite] rounded-full shadow-sm border border-white flex justify-center items-center">
+                            <div class="bg-white/90 backdrop-blur-md px-4 py-1 text-tripool animate-big-bounce-1 rounded-full shadow-sm border border-white flex justify-center items-center">
                                 <i class="ph-fill ph-car-profile text-3xl"></i>
                             </div>
                         </div>
@@ -212,7 +223,7 @@
                 <div class="py-20 flex justify-center items-center opacity-80" data-aos="fade-in" data-aos-duration="1500">
                     <div class="w-full max-w-4xl border-t-[3px] border-dashed border-tripool/40 relative">
                         <div class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2">
-                            <div class="bg-white/90 backdrop-blur-md px-4 py-1 text-tripool animate-[bounce_3s_infinite_0.7s] rounded-full shadow-sm border border-white flex justify-center items-center">
+                            <div class="bg-white/90 backdrop-blur-md px-4 py-1 text-tripool animate-big-bounce-2 rounded-full shadow-sm border border-white flex justify-center items-center">
                                 <i class="ph-fill ph-car-profile text-3xl"></i>
                             </div>
                         </div>
@@ -242,7 +253,7 @@
                 <div class="pt-20 pb-10 flex justify-center items-center opacity-80" data-aos="fade-in" data-aos-duration="1500">
                     <div class="w-full max-w-4xl border-t-[3px] border-dashed border-tripool/40 relative">
                         <div class="absolute right-0 top-0 -translate-y-1/2">
-                            <div class="bg-white/90 backdrop-blur-md px-4 py-1 text-tripool animate-[bounce_3s_infinite_1.4s] rounded-full shadow-sm border border-white flex justify-center items-center">
+                            <div class="bg-white/90 backdrop-blur-md px-4 py-1 text-tripool animate-big-bounce-3 rounded-full shadow-sm border border-white flex justify-center items-center">
                                 <i class="ph-fill ph-car-profile text-3xl"></i>
                             </div>
                         </div>
@@ -252,16 +263,53 @@
         </div>
     </section>
 
-    <section class="relative bg-tripool pt-32 pb-24 shadow-[0_-10px_30px_rgba(0,180,164,0.3)] mt-12">
+    <section id="promo" class="pb-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 md:p-12 border border-tripool-yellow/60 shadow-[0_15px_40px_-15px_rgba(255,202,24,0.3)] relative overflow-hidden" data-aos="zoom-in" data-aos-duration="1000">
+                
+                <div class="absolute top-0 right-0 bg-tripool-yellow text-dark font-black px-6 py-2 rounded-bl-2xl shadow-sm tracking-wider">
+                    🌸 春季限定優惠・至 4 月底
+                </div>
+                
+                <div class="text-center mb-10 mt-4 md:mt-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">專屬包車旅遊，享受美好時光</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+                        不再煩惱交通轉乘，沒有大眾運輸的時間壓力，更不必與陌生人拼車。tripool 旅步為您提供乾淨舒適的專屬車輛與專業司機，依據您的節奏客製化行程。
+                        現在預訂包車旅遊即享 <strong class="text-tripool text-xl mx-1">全面 85 折</strong>，完成結帳再加碼贈送 <strong class="text-tripool-yellowDark text-xl mx-1">百元乘車優惠券</strong>！
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="rounded-2xl overflow-hidden shadow-md h-56 md:h-64 image-container">
+                        <img src="girl.jpg" alt="與好友共創美好回憶" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-md h-56 md:h-64 image-container">
+                        <img src="road.jpg" alt="絕美沿途風景" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-md h-56 md:h-64 image-container">
+                        <img src="car.jpg" alt="tripool 舒適專車接送" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="mt-10 text-center">
+                    <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="inline-block bg-dark text-white font-bold text-lg px-8 py-3 rounded-full hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        馬上領取優惠出發
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative bg-tripool pt-32 pb-24 shadow-[0_-10px_30px_rgba(0,180,164,0.3)] mt-8">
         
-        <div class="absolute -top-[23px] left-0 w-full h-[24px] text-tripool z-10">
+        <div class="absolute -top-[11px] left-0 w-full h-[12px] text-tripool z-10">
             <svg class="block w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
-                    <pattern id="scallop" x="0" y="0" width="60" height="24" patternUnits="userSpaceOnUse">
-                        <ellipse cx="30" cy="24" rx="30" ry="24" fill="currentColor" />
+                    <pattern id="scallop" x="0" y="0" width="20" height="12" patternUnits="userSpaceOnUse">
+                        <ellipse cx="10" cy="12" rx="10" ry="12" fill="currentColor" />
                     </pattern>
                 </defs>
-                <rect x="0" y="0" width="100%" height="24" fill="url(#scallop)" />
+                <rect x="0" y="0" width="100%" height="12" fill="url(#scallop)" />
             </svg>
         </div>
 
