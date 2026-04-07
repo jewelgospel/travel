@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -18,7 +20,7 @@
                             DEFAULT: '#00B4A4',
                             light: '#E6F7F6',
                             dark: '#009184',
-                            yellow: '#FFCA18', /* 新增 tripool 黃色 */
+                            yellow: '#FFCA18',
                             yellowDark: '#E5B515'
                         },
                         dark: '#2D3748'
@@ -31,14 +33,19 @@
         }
     </script>
     <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FAFAFA; color: #333; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FAFAFA; color: #333; overflow-x: hidden; }
         .image-container img {
-            transition: transform 0.5s ease;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .image-container:hover img {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
+        /* 隱藏原生捲軸，讓畫面更乾淨 (可選) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #00B4A4; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #009184; }
     </style>
 </head>
 <body class="antialiased selection:bg-tripool selection:text-white">
@@ -46,28 +53,23 @@
     <nav class="fixed w-full z-50 bg-tripool transition-all duration-300 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" data-aos="fade-right">
                     <span class="text-3xl font-black text-white tracking-tighter">tripool</span>
                     <span class="ml-2 text-sm font-medium text-white/80 border-l border-white/30 pl-2 hidden sm:block">全台長程接送包車</span>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
+                <div class="hidden md:flex space-x-8 items-center" data-aos="fade-left">
                     <a href="#features" class="text-white hover:text-tripool-light font-medium transition-colors">包車優勢</a>
                     <a href="#destinations" class="text-white hover:text-tripool-light font-medium transition-colors">精選景點</a>
                     <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="bg-tripool-yellow text-dark px-6 py-2.5 rounded-full font-bold hover:bg-tripool-yellowDark transition-all shadow-lg shadow-tripool-yellow/30 hover:shadow-xl transform hover:-translate-y-0.5">
                         立即試算車資
                     </a>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button class="text-white hover:text-tripool-light">
-                        <i class="ph ph-list text-3xl"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </nav>
 
     <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-5xl mx-auto mb-12">
+        <div class="text-center max-w-5xl mx-auto mb-12" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight mb-6">
                 <span class="block md:inline">隨心所欲，</span>
                 <span class="block md:inline"><span class="text-tripool">專屬你的</span>台灣之旅</span>
@@ -77,72 +79,64 @@
             </p>
         </div>
 
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 image-container bg-white">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 image-container bg-white" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
             <img src="hero.png" 
                  alt="台灣景點：九份、蘭嶼、烏來" 
                  class="w-full h-auto object-cover max-h-[70vh]"
                  onerror="this.src='https://images.unsplash.com/photo-1578330755913-c288d6b9743a?q=80&w=2000&auto=format&fit=crop'; this.alt='圖片載入失敗，顯示替代圖片';">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
             <div class="absolute bottom-6 right-8 text-white/90 text-sm font-bold tracking-wider drop-shadow-md hidden md:block">
-                📍 圖片景點：九份阿妹茶樓｜蘭嶼東清灣｜烏來瀑布纜車(※此圖片為AI生成)
+                📍 圖片景點：九份阿妹茶樓｜蘭嶼東清灣｜烏來瀑布纜車
             </div>
         </div>
     </section>
 
     <section id="features" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">為什麼選擇 tripool 包車服務？</h2>
                 <div class="w-16 h-1 bg-tripool mx-auto rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
-                        <i class="ph ph-currency-circle-dollar"></i>
-                    </div>
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-currency-circle-dollar"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">AI 動態計價 價格透明</h3>
                     <p class="text-gray-600 leading-relaxed">線上即時試算，絕無隱藏費用。依據您的行程客製化報價，長途包車比傳統計程車更划算。</p>
                 </div>
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
-                        <i class="ph ph-car-profile"></i>
-                    </div>
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-car-profile"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">合法專車 專業司機</h3>
                     <p class="text-gray-600 leading-relaxed">嚴選無肇事紀錄的職業司機，提供 5 人座與 9 人座合法租賃車，確保旅途安全又舒適。</p>
                 </div>
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
-                        <i class="ph ph-paw-print"></i>
-                    </div>
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-paw-print"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">寵物友善 無憂同行</h3>
                     <p class="text-gray-600 leading-relaxed">不需將毛小孩留在家！提供寵物友善車輛，讓您的愛寵也能參與每一次的家庭旅行。</p>
                 </div>
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
-                        <i class="ph ph-calendar-check"></i>
-                    </div>
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-calendar-check"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">優於業界 免費取消</h3>
-                    <p class="text-gray-600 leading-relaxed">行程有變數？不用擔心！派車前一日（特定條件下）提供優於業界的免費取消政策，退款有保障。</p>
+                    <p class="text-gray-600 leading-relaxed">行程有變數？不用擔心！派車前一日提供優於業界的免費取消政策，退款有保障。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="destinations" class="py-20 bg-slate-50">
+    <section id="destinations" class="py-24 bg-slate-50 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-right">
                 <div>
                     <span class="text-tripool font-bold tracking-wider text-sm uppercase mb-2 block">Top Destinations</span>
                     <h2 class="text-3xl md:text-4xl font-bold text-dark">台灣絕美風景 推薦行程</h2>
                 </div>
                 <p class="text-gray-500 mt-4 md:mt-0 max-w-md md:text-right">
-                    參考交通部觀光署資訊，我們精選了三個最具特色的台灣美景。包車出遊，點到點直達，省去轉車煩惱。
+                    參考交通部觀光署資訊，精選三個最具特色的台灣美景。包車出遊，點到點直達，省去轉車煩惱。
                 </p>
             </div>
 
-            <div class="space-y-12">
-                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+            <div>
+                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
                     <div class="lg:w-2/5 bg-tripool-light p-8 lg:p-12 flex flex-col justify-center">
                         <div class="flex items-center space-x-2 text-tripool mb-4">
                             <i class="ph-fill ph-map-pin text-xl"></i>
@@ -157,12 +151,20 @@
                             <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">紅燈籠夜景</span>
                         </div>
                     </div>
-                    <div class="lg:w-3/5 relative min-h-[300px]">
+                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden">
                         <img src="jiufen.jpg" alt="九份老街" class="absolute inset-0 w-full h-full object-cover">
                     </div>
                 </div>
 
-                <div class="flex flex-col lg:flex-row-reverse bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                <div class="py-20 flex justify-center items-center opacity-70" data-aos="fade-in" data-aos-duration="1500">
+                    <div class="w-full max-w-2xl border-t-[3px] border-dashed border-gray-300 relative">
+                        <div class="absolute left-1/2 -translate-x-1/2 -top-[18px] bg-slate-50 px-6 text-tripool animate-[bounce_3s_infinite]">
+                            <i class="ph-fill ph-car-profile text-3xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row-reverse bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
                     <div class="lg:w-2/5 bg-[#E8F4F8] p-8 lg:p-12 flex flex-col justify-center">
                         <div class="flex items-center space-x-2 text-[#0088A8] mb-4">
                             <i class="ph-fill ph-map-pin text-xl"></i>
@@ -177,12 +179,20 @@
                             <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">拼板舟</span>
                         </div>
                     </div>
-                    <div class="lg:w-3/5 relative min-h-[300px]">
+                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden">
                         <img src="lanyu.jpg" alt="蘭嶼海景與拼板舟" class="absolute inset-0 w-full h-full object-cover">
                     </div>
                 </div>
 
-                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                <div class="py-20 flex justify-center items-center opacity-70" data-aos="fade-in" data-aos-duration="1500">
+                    <div class="w-full max-w-2xl border-t-[3px] border-dashed border-gray-300 relative">
+                        <div class="absolute left-1/2 -translate-x-1/2 -top-[18px] bg-slate-50 px-6 text-tripool animate-[bounce_3s_infinite_0.5s]">
+                            <i class="ph-fill ph-car-profile text-3xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
                     <div class="lg:w-2/5 bg-[#F0F5ED] p-8 lg:p-12 flex flex-col justify-center">
                         <div class="flex items-center space-x-2 text-[#4A8B3B] mb-4">
                             <i class="ph-fill ph-map-pin text-xl"></i>
@@ -197,7 +207,7 @@
                             <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">溫泉美人湯</span>
                         </div>
                     </div>
-                    <div class="lg:w-3/5 relative min-h-[300px]">
+                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden">
                         <img src="wulai.jpg" alt="烏來瀑布" class="absolute inset-0 w-full h-full object-cover">
                     </div>
                 </div>
@@ -205,18 +215,25 @@
         </div>
     </section>
 
-    <section class="py-24 bg-tripool relative overflow-hidden">
+    <section class="relative bg-tripool pt-32 pb-24 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 text-slate-50">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120H1200V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="currentColor"></path>
+            </svg>
+        </div>
+
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full"><path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path></svg>
         </div>
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">準備好開始您的旅程了嗎？</h2>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-20 text-center" data-aos="zoom-in" data-aos-duration="1000">
+            <h2 class="text-4xl font-bold text-white mb-6">準備好開始您的專屬旅程了嗎？</h2>
             <p class="text-tripool-light text-xl mb-10">
                 不再受限於大眾運輸的時間表，讓 tripool 專業司機帶您深入台灣每個美麗角落。
             </p>
-            <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="inline-flex items-center justify-center bg-tripool-yellow text-dark font-bold text-lg px-10 py-4 rounded-full hover:bg-tripool-yellowDark transition-all shadow-[0_10px_25px_-5px_rgba(0,0,0,0.2)] hover:scale-105">
-                前往 tripool 試算車資與預訂
-                <i class="ph ph-arrow-right font-bold ml-2"></i>
+            <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="inline-flex items-center justify-center bg-tripool-yellow text-dark font-bold text-lg px-10 py-4 rounded-full hover:bg-tripool-yellowDark transition-all shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:scale-105 group">
+                立即前往試算車資
+                <i class="ph ph-arrow-right font-bold ml-2 group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
     </section>
@@ -225,7 +242,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0 text-center md:text-left">
                 <span class="text-2xl font-black text-white tracking-tighter block mb-2">tripool</span>
-                <p class="text-sm mt-2">本網頁為概念設計，景點資訊參考交通部觀光署。</p>
+                <p class="text-sm mt-2">本網頁為面試概念展示作品，景點資訊參考交通部觀光署。</p>
             </div>
             <div class="flex space-x-6 text-sm">
                 <a href="https://www.tripool.app/" target="_blank" class="hover:text-white transition-colors">官方網站</a>
@@ -235,5 +252,20 @@
         </div>
     </footer>
 
+    <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] w-14 h-14 md:w-16 md:h-16 bg-tripool-yellow hover:bg-tripool-yellowDark text-dark rounded-full flex items-center justify-center shadow-[0_10px_25px_-5px_rgba(0,0,0,0.4)] hover:scale-110 transition-all duration-300 group" data-aos="zoom-in" data-aos-delay="500">
+        <i class="ph-fill ph-taxi text-3xl group-hover:-translate-y-1 transition-transform duration-300"></i>
+        <span class="absolute right-full mr-4 bg-dark text-white text-sm font-bold py-2 px-4 rounded-lg whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-2 transition-all duration-300 shadow-lg">
+            立即試算車資！
+        </span>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 設定 AOS 動畫只觸發一次 (once: true)，避免一直上下滾動時重複閃爍
+        AOS.init({
+            once: true,
+            offset: 100, // 提早或延遲觸發動畫的距離
+        });
+    </script>
 </body>
 </html>
