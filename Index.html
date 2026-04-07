@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tripool 旅步 | 專屬包車暢遊台灣：九份、蘭嶼、烏來</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tripool: {
+                            DEFAULT: '#00B4A4',
+                            light: '#E6F7F6',
+                            dark: '#009184',
+                            yellow: '#FFCA18', /* 新增 tripool 黃色 */
+                            yellowDark: '#E5B515'
+                        },
+                        dark: '#2D3748'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FAFAFA; color: #333; }
+        .image-container img {
+            transition: transform 0.5s ease;
+        }
+        .image-container:hover img {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-tripool selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-tripool transition-all duration-300 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="text-3xl font-black text-white tracking-tighter">tripool</span>
+                    <span class="ml-2 text-sm font-medium text-white/80 border-l border-white/30 pl-2 hidden sm:block">全台長程接送包車</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-white hover:text-tripool-light font-medium transition-colors">包車優勢</a>
+                    <a href="#destinations" class="text-white hover:text-tripool-light font-medium transition-colors">精選景點</a>
+                    <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="bg-tripool-yellow text-dark px-6 py-2.5 rounded-full font-bold hover:bg-tripool-yellowDark transition-all shadow-lg shadow-tripool-yellow/30 hover:shadow-xl transform hover:-translate-y-0.5">
+                        立即試算車資
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-white hover:text-tripool-light">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-5xl mx-auto mb-12">
+            <h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight mb-6">
+                <span class="block md:inline">隨心所欲，</span>
+                <span class="block md:inline"><span class="text-tripool">專屬你的</span>台灣之旅</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 mb-8 max-w-3xl mx-auto">
+                打破交通限制，tripool 包車服務帶您輕鬆探索九份的復古山城、蘭嶼的湛藍海景，與烏來的芬多精瀑布。專業司機、透明價格，讓旅行回歸最純粹的享受。
+            </p>
+        </div>
+
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 image-container bg-white">
+            <img src="hero.png" 
+                 alt="台灣景點：九份、蘭嶼、烏來" 
+                 class="w-full h-auto object-cover max-h-[70vh]"
+                 onerror="this.src='https://images.unsplash.com/photo-1578330755913-c288d6b9743a?q=80&w=2000&auto=format&fit=crop'; this.alt='圖片載入失敗，顯示替代圖片';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-6 right-8 text-white/90 text-sm font-bold tracking-wider drop-shadow-md hidden md:block">
+                📍 圖片景點：九份阿妹茶樓｜蘭嶼東清灣｜烏來瀑布纜車(※此圖片為AI生成)
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">為什麼選擇 tripool 包車服務？</h2>
+                <div class="w-16 h-1 bg-tripool mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-currency-circle-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">AI 動態計價 價格透明</h3>
+                    <p class="text-gray-600 leading-relaxed">線上即時試算，絕無隱藏費用。依據您的行程客製化報價，長途包車比傳統計程車更划算。</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-car-profile"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">合法專車 專業司機</h3>
+                    <p class="text-gray-600 leading-relaxed">嚴選無肇事紀錄的職業司機，提供 5 人座與 9 人座合法租賃車，確保旅途安全又舒適。</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-paw-print"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">寵物友善 無憂同行</h3>
+                    <p class="text-gray-600 leading-relaxed">不需將毛小孩留在家！提供寵物友善車輛，讓您的愛寵也能參與每一次的家庭旅行。</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">優於業界 免費取消</h3>
+                    <p class="text-gray-600 leading-relaxed">行程有變數？不用擔心！派車前一日（特定條件下）提供優於業界的免費取消政策，退款有保障。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-tripool font-bold tracking-wider text-sm uppercase mb-2 block">Top Destinations</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark">台灣絕美風景 推薦行程</h2>
+                </div>
+                <p class="text-gray-500 mt-4 md:mt-0 max-w-md md:text-right">
+                    參考交通部觀光署資訊，我們精選了三個最具特色的台灣美景。包車出遊，點到點直達，省去轉車煩惱。
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="lg:w-2/5 bg-tripool-light p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="flex items-center space-x-2 text-tripool mb-4">
+                            <i class="ph-fill ph-map-pin text-xl"></i>
+                            <span class="font-bold tracking-widest">新北市</span>
+                        </div>
+                        <h3 class="text-3xl font-black text-dark mb-4">九份 Jiufen</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            依據觀光署介紹，九份的房屋順應山勢，鱗次櫛比地蓋在一起。如今以其獨特的「山城」聚落景觀、蜿蜒的石階與紅燈籠街道聞名國際。漫步在豎崎路，感受復古與歷史交織的濃厚氛圍。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">復古老街</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">紅燈籠夜景</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 relative min-h-[300px]">
+                        <img src="jiufen.jpg" alt="九份老街" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row-reverse bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="lg:w-2/5 bg-[#E8F4F8] p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="flex items-center space-x-2 text-[#0088A8] mb-4">
+                            <i class="ph-fill ph-map-pin text-xl"></i>
+                            <span class="font-bold tracking-widest">台東縣</span>
+                        </div>
+                        <h3 class="text-3xl font-black text-dark mb-4">蘭嶼 Lanyu</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            觀光署資料指出，蘭嶼保留了豐富的達悟族文化與原始自然生態。清澈見底的湛藍海洋、獨特的「拼板舟」文化，是旅客不可錯過的絕美島嶼。tripool 能為您安排前往台東富岡漁港的舒適接駁。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">達悟族文化</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">拼板舟</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 relative min-h-[300px]">
+                        <img src="lanyu.jpg" alt="蘭嶼海景與拼板舟" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="lg:w-2/5 bg-[#F0F5ED] p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="flex items-center space-x-2 text-[#4A8B3B] mb-4">
+                            <i class="ph-fill ph-map-pin text-xl"></i>
+                            <span class="font-bold tracking-widest">新北市</span>
+                        </div>
+                        <h3 class="text-3xl font-black text-dark mb-4">烏來 Wulai</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            「烏來」擁有水質極佳的碳酸氫鈉泉，加上高聳壯麗的烏來瀑布、穿越山林的空中纜車。是北台灣享受森林浴、品嚐原住民美食的絕佳秘境。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">烏來瀑布</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">溫泉美人湯</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 relative min-h-[300px]">
+                        <img src="wulai.jpg" alt="烏來瀑布" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-tripool relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full"><path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path></svg>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">準備好開始您的旅程了嗎？</h2>
+            <p class="text-tripool-light text-xl mb-10">
+                不再受限於大眾運輸的時間表，讓 tripool 專業司機帶您深入台灣每個美麗角落。
+            </p>
+            <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="inline-flex items-center justify-center bg-tripool-yellow text-dark font-bold text-lg px-10 py-4 rounded-full hover:bg-tripool-yellowDark transition-all shadow-[0_10px_25px_-5px_rgba(0,0,0,0.2)] hover:scale-105">
+                前往 tripool 試算車資與預訂
+                <i class="ph ph-arrow-right font-bold ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <span class="text-2xl font-black text-white tracking-tighter block mb-2">tripool</span>
+                <p class="text-sm mt-2">本網頁為概念設計，景點資訊參考交通部觀光署。</p>
+            </div>
+            <div class="flex space-x-6 text-sm">
+                <a href="https://www.tripool.app/" target="_blank" class="hover:text-white transition-colors">官方網站</a>
+                <a href="https://www.tripool.app/car-rental-with-driver" target="_blank" class="hover:text-white transition-colors">包車服務</a>
+                <a href="https://www.taiwan.net.tw/" target="_blank" class="hover:text-white transition-colors">觀光署</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
