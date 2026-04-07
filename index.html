@@ -34,21 +34,43 @@
     </script>
     <style>
         html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FAFAFA; color: #333; overflow-x: hidden; }
+        
+        /* 點狀地圖網格與漸層背景 */
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            color: #333; 
+            overflow-x: hidden; 
+            background-color: #FAFAFA;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 180, 164, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 202, 24, 0.08) 0px, transparent 50%),
+                radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+            background-size: 100% 100%, 100% 100%, 28px 28px;
+            background-attachment: fixed;
+        }
+
+        /* 毛玻璃特效 Class */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 40px -10px rgba(0, 180, 164, 0.1);
+        }
+
         .image-container img {
             transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .image-container:hover img {
             transform: scale(1.03);
         }
-        /* 隱藏原生捲軸，讓畫面更乾淨 (可選) */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #00B4A4; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #009184; }
     </style>
 </head>
-<body class="antialiased selection:bg-tripool selection:text-white">
+<body class="antialiased selection:bg-tripool selection:text-white relative">
 
     <nav class="fixed w-full z-50 bg-tripool transition-all duration-300 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,24 +96,24 @@
                 <span class="block md:inline">隨心所欲，</span>
                 <span class="block md:inline"><span class="text-tripool">專屬你的</span>台灣之旅</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-500 mb-8 max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto font-medium">
                 打破交通限制，tripool 包車服務帶您輕鬆探索九份的復古山城、蘭嶼的湛藍海景，與烏來的芬多精瀑布。專業司機、透明價格，讓旅行回歸最純粹的享受。
             </p>
         </div>
 
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 image-container bg-white" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
+        <div class="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-[4px] border-white image-container bg-white" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
             <img src="hero.png" 
                  alt="台灣景點：九份、蘭嶼、烏來" 
                  class="w-full h-auto object-cover max-h-[70vh]"
                  onerror="this.src='https://images.unsplash.com/photo-1578330755913-c288d6b9743a?q=80&w=2000&auto=format&fit=crop'; this.alt='圖片載入失敗，顯示替代圖片';">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
             <div class="absolute bottom-6 right-8 text-white/90 text-sm font-bold tracking-wider drop-shadow-md hidden md:block">
                 📍 圖片景點：九份阿妹茶樓｜蘭嶼東清灣｜烏來瀑布纜車
             </div>
         </div>
     </section>
 
-    <section id="features" class="py-20 bg-white">
+    <section id="features" class="py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">為什麼選擇 tripool 包車服務？</h2>
@@ -99,126 +121,136 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="0">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-currency-circle-dollar"></i></div>
+                <div class="glass-card rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 bg-tripool-light rounded-2xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 group-hover:bg-tripool group-hover:text-white transition-all duration-300"><i class="ph ph-currency-circle-dollar"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">AI 動態計價 價格透明</h3>
-                    <p class="text-gray-600 leading-relaxed">線上即時試算，絕無隱藏費用。依據您的行程客製化報價，長途包車比傳統計程車更划算。</p>
+                    <p class="text-gray-600 leading-relaxed font-medium">線上即時試算，絕無隱藏費用。依據您的行程客製化報價，長途包車比傳統計程車更划算。</p>
                 </div>
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-car-profile"></i></div>
+                <div class="glass-card rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-tripool-light rounded-2xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 group-hover:bg-tripool group-hover:text-white transition-all duration-300"><i class="ph ph-car-profile"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">合法專車 專業司機</h3>
-                    <p class="text-gray-600 leading-relaxed">嚴選無肇事紀錄的職業司機，提供 5 人座與 9 人座合法租賃車，確保旅途安全又舒適。</p>
+                    <p class="text-gray-600 leading-relaxed font-medium">嚴選無肇事紀錄的職業司機，提供 5 人座與 9 人座合法租賃車，確保旅途安全又舒適。</p>
                 </div>
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-paw-print"></i></div>
+                <div class="glass-card rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-tripool-light rounded-2xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 group-hover:bg-tripool group-hover:text-white transition-all duration-300"><i class="ph ph-paw-print"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">寵物友善 無憂同行</h3>
-                    <p class="text-gray-600 leading-relaxed">不需將毛小孩留在家！提供寵物友善車輛，讓您的愛寵也能參與每一次的家庭旅行。</p>
+                    <p class="text-gray-600 leading-relaxed font-medium">不需將毛小孩留在家！提供寵物友善車輛，讓您的愛寵也能參與每一次的家庭旅行。</p>
                 </div>
-                <div class="bg-slate-50 rounded-2xl p-8 hover:bg-tripool-light transition-colors duration-300 group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 transition-transform"><i class="ph ph-calendar-check"></i></div>
+                <div class="glass-card rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-tripool-light rounded-2xl flex items-center justify-center text-tripool text-3xl shadow-sm mb-6 group-hover:scale-110 group-hover:bg-tripool group-hover:text-white transition-all duration-300"><i class="ph ph-calendar-check"></i></div>
                     <h3 class="text-xl font-bold text-dark mb-3">優於業界 免費取消</h3>
-                    <p class="text-gray-600 leading-relaxed">行程有變數？不用擔心！派車前一日提供優於業界的免費取消政策，退款有保障。</p>
+                    <p class="text-gray-600 leading-relaxed font-medium">行程有變數？不用擔心！派車前一日提供優於業界的免費取消政策，退款有保障。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="destinations" class="py-24 bg-slate-50 relative">
+    <section id="destinations" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-right">
                 <div>
                     <span class="text-tripool font-bold tracking-wider text-sm uppercase mb-2 block">Top Destinations</span>
                     <h2 class="text-3xl md:text-4xl font-bold text-dark">台灣絕美風景 推薦行程</h2>
                 </div>
-                <p class="text-gray-500 mt-4 md:mt-0 max-w-md md:text-right">
-                    參考交通部觀光署資訊，精選三個最具特色的台灣美景。包車出遊，點到點直達，省去轉車煩惱。
+                <p class="text-gray-600 mt-4 md:mt-0 max-w-md md:text-right font-bold text-lg">
+                    <span class="block">參考交通部觀光署資訊，精選三個台灣美景。</span>
+                    <span class="block text-tripool">包車出遊，點到點直達，省去轉車煩惱！</span>
                 </p>
             </div>
 
             <div>
-                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="lg:w-2/5 bg-tripool-light p-8 lg:p-12 flex flex-col justify-center">
+                <div class="flex flex-col lg:flex-row glass-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center bg-white/40">
                         <div class="flex items-center space-x-2 text-tripool mb-4">
                             <i class="ph-fill ph-map-pin text-xl"></i>
                             <span class="font-bold tracking-widest">新北市</span>
                         </div>
                         <h3 class="text-3xl font-black text-dark mb-4">九份 Jiufen</h3>
-                        <p class="text-gray-600 leading-relaxed mb-6">
+                        <p class="text-gray-700 leading-relaxed mb-6 font-medium">
                             依據觀光署介紹，九份的房屋順應山勢，鱗次櫛比地蓋在一起。如今以其獨特的「山城」聚落景觀、蜿蜒的石階與紅燈籠街道聞名國際。漫步在豎崎路，感受復古與歷史交織的濃厚氛圍。
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">復古老街</span>
-                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">紅燈籠夜景</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full shadow-sm">復古老街</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full shadow-sm">紅燈籠夜景</span>
                         </div>
                     </div>
-                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden">
-                        <img src="jiufen.jpg" alt="九份老街" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden p-2">
+                        <img src="jiufen.jpg" alt="九份老街" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
                     </div>
                 </div>
 
-                <div class="py-20 flex justify-center items-center opacity-70" data-aos="fade-in" data-aos-duration="1500">
-                    <div class="w-full max-w-2xl border-t-[3px] border-dashed border-gray-300 relative">
-                        <div class="absolute left-1/2 -translate-x-1/2 -top-[18px] bg-slate-50 px-6 text-tripool animate-[bounce_3s_infinite]">
+                <div class="py-20 flex justify-center items-center opacity-80" data-aos="fade-in" data-aos-duration="1500">
+                    <div class="w-full max-w-3xl border-t-[3px] border-dashed border-tripool/40 relative mx-4 md:mx-10">
+                        <div class="absolute left-0 md:left-4 -top-[20px] bg-white/90 backdrop-blur-md px-5 py-1 text-tripool animate-[bounce_3s_infinite] rounded-full shadow-sm border border-white">
                             <i class="ph-fill ph-car-profile text-3xl"></i>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col lg:flex-row-reverse bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="lg:w-2/5 bg-[#E8F4F8] p-8 lg:p-12 flex flex-col justify-center">
+                <div class="flex flex-col lg:flex-row-reverse glass-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center bg-[#E8F4F8]/50">
                         <div class="flex items-center space-x-2 text-[#0088A8] mb-4">
                             <i class="ph-fill ph-map-pin text-xl"></i>
                             <span class="font-bold tracking-widest">台東縣</span>
                         </div>
                         <h3 class="text-3xl font-black text-dark mb-4">蘭嶼 Lanyu</h3>
-                        <p class="text-gray-600 leading-relaxed mb-6">
+                        <p class="text-gray-700 leading-relaxed mb-6 font-medium">
                             觀光署資料指出，蘭嶼保留了豐富的達悟族文化與原始自然生態。清澈見底的湛藍海洋、獨特的「拼板舟」文化，是旅客不可錯過的絕美島嶼。tripool 能為您安排前往台東富岡漁港的舒適接駁。
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">達悟族文化</span>
-                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">拼板舟</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full shadow-sm">達悟族文化</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full shadow-sm">拼板舟</span>
                         </div>
                     </div>
-                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden">
-                        <img src="lanyu.jpg" alt="蘭嶼海景與拼板舟" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden p-2">
+                        <img src="lanyu.jpg" alt="蘭嶼海景與拼板舟" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
                     </div>
                 </div>
 
-                <div class="py-20 flex justify-center items-center opacity-70" data-aos="fade-in" data-aos-duration="1500">
-                    <div class="w-full max-w-2xl border-t-[3px] border-dashed border-gray-300 relative">
-                        <div class="absolute left-1/2 -translate-x-1/2 -top-[18px] bg-slate-50 px-6 text-tripool animate-[bounce_3s_infinite_0.5s]">
+                <div class="py-20 flex justify-center items-center opacity-80" data-aos="fade-in" data-aos-duration="1500">
+                    <div class="w-full max-w-3xl border-t-[3px] border-dashed border-tripool/40 relative mx-4 md:mx-10">
+                        <div class="absolute left-1/2 -translate-x-1/2 -top-[20px] bg-white/90 backdrop-blur-md px-5 py-1 text-tripool animate-[bounce_3s_infinite_0.7s] rounded-full shadow-sm border border-white">
                             <i class="ph-fill ph-car-profile text-3xl"></i>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="lg:w-2/5 bg-[#F0F5ED] p-8 lg:p-12 flex flex-col justify-center">
+                <div class="flex flex-col lg:flex-row glass-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center bg-[#F0F5ED]/50">
                         <div class="flex items-center space-x-2 text-[#4A8B3B] mb-4">
                             <i class="ph-fill ph-map-pin text-xl"></i>
                             <span class="font-bold tracking-widest">新北市</span>
                         </div>
                         <h3 class="text-3xl font-black text-dark mb-4">烏來 Wulai</h3>
-                        <p class="text-gray-600 leading-relaxed mb-6">
+                        <p class="text-gray-700 leading-relaxed mb-6 font-medium">
                             「烏來」擁有水質極佳的碳酸氫鈉泉，加上高聳壯麗的烏來瀑布、穿越山林的空中纜車。是北台灣享受森林浴、品嚐原住民美食的絕佳秘境。
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">烏來瀑布</span>
-                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full">溫泉美人湯</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full shadow-sm">烏來瀑布</span>
+                            <span class="px-3 py-1 bg-tripool text-white font-bold text-sm rounded-full shadow-sm">溫泉美人湯</span>
                         </div>
                     </div>
-                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden">
-                        <img src="wulai.jpg" alt="烏來瀑布" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="lg:w-3/5 relative min-h-[350px] image-container overflow-hidden p-2">
+                        <img src="wulai.jpg" alt="烏來瀑布" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
+                    </div>
+                </div>
+
+                <div class="py-20 flex justify-center items-center opacity-80" data-aos="fade-in" data-aos-duration="1500">
+                    <div class="w-full max-w-3xl border-t-[3px] border-dashed border-tripool/40 relative mx-4 md:mx-10">
+                        <div class="absolute right-0 md:right-4 -top-[20px] bg-white/90 backdrop-blur-md px-5 py-1 text-tripool animate-[bounce_3s_infinite_1.4s] rounded-full shadow-sm border border-white">
+                            <i class="ph-fill ph-car-profile text-3xl"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="relative bg-tripool pt-32 pb-24 overflow-hidden">
-        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 text-slate-50">
+    <section class="relative bg-tripool pt-32 pb-24 overflow-hidden shadow-[0_-10px_30px_rgba(0,180,164,0.3)]">
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10" style="color: #f7f9fc;">
             <svg class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120H1200V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="currentColor"></path>
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120H1200V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="currentColor" opacity="0.6"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="currentColor"></path>
             </svg>
         </div>
 
@@ -238,11 +270,11 @@
         </div>
     </section>
 
-    <footer class="bg-dark text-gray-400 py-12">
+    <footer class="bg-dark text-gray-400 py-12 border-t-4 border-tripool-yellow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0 text-center md:text-left">
                 <span class="text-2xl font-black text-white tracking-tighter block mb-2">tripool</span>
-                <p class="text-sm mt-2">本網頁為面試概念展示作品，景點資訊參考交通部觀光署。</p>
+                <p class="text-sm mt-2">本網頁為面試概念展示作品（Redesign Concept），景點資訊參考交通部觀光署。</p>
             </div>
             <div class="flex space-x-6 text-sm">
                 <a href="https://www.tripool.app/" target="_blank" class="hover:text-white transition-colors">官方網站</a>
@@ -261,10 +293,9 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 設定 AOS 動畫只觸發一次 (once: true)，避免一直上下滾動時重複閃爍
         AOS.init({
             once: true,
-            offset: 100, // 提早或延遲觸發動畫的距離
+            offset: 100,
         });
     </script>
 </body>
