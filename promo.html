@@ -19,10 +19,10 @@
                             DEFAULT: '#00B4A4',
                             light: '#E6F7F6',
                             dark: '#009184',
-                            yellow: '#F5A623', /* 配合參考圖調整為較暖的橘黃色 */
+                            yellow: '#F5A623', /* 參考圖的溫暖橘黃色 */
                         },
                         dark: '#2D3748',
-                        pinkBadge: '#FF7A90' /* 參考圖的粉紅色標籤 */
+                        pinkBadge: '#FF7A90' /* 參考圖的粉紅標籤色 */
                     },
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
@@ -35,49 +35,61 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: #ffffff; color: #333; }
         
-        /* 幻燈片淡入淡出 */
+        /* 幻燈片淡入淡出基礎設定 */
         .slide {
             transition: opacity 1.5s ease-in-out;
             transform-origin: center;
         }
 
-        /* 第一張：從左到右平移 */
-        @keyframes kenBurnsRight {
-            from { transform: scale(1.1) translateX(-2%); }
-            to { transform: scale(1.1) translateX(2%); }
+        /* 1. 從左到右平移 */
+        @keyframes panRight {
+            from { transform: scale(1.1) translateX(-3%); }
+            to { transform: scale(1.1) translateX(3%); }
         }
-        .animate-pan-right { animation: kenBurnsRight 8s linear infinite alternate; }
+        .anim-pan-right { animation: panRight 10s linear infinite alternate; }
 
-        /* 第二張：從上到下平移 */
-        @keyframes kenBurnsDown {
-            from { transform: scale(1.1) translateY(-2%); }
-            to { transform: scale(1.1) translateY(2%); }
+        /* 2. 從上到下平移 */
+        @keyframes panDown {
+            from { transform: scale(1.1) translateY(-3%); }
+            to { transform: scale(1.1) translateY(3%); }
         }
-        .animate-pan-down { animation: kenBurnsDown 8s linear infinite alternate; }
+        .anim-pan-down { animation: panDown 10s linear infinite alternate; }
 
-        /* 第三張：慢慢放大 */
-        @keyframes kenBurnsZoom {
-            from { transform: scale(1.05); }
-            to { transform: scale(1.2); }
+        /* 3. 由大到小 (Zoom Out) */
+        @keyframes zoomOut {
+            from { transform: scale(1.2); }
+            to { transform: scale(1.05); }
         }
-        .animate-zoom-in { animation: kenBurnsZoom 8s linear infinite alternate; }
+        .anim-zoom-out { animation: zoomOut 10s linear infinite alternate; }
+
+        /* 4. 從右到左平移 */
+        @keyframes panLeft {
+            from { transform: scale(1.1) translateX(3%); }
+            to { transform: scale(1.1) translateX(-3%); }
+        }
+        .anim-pan-left { animation: panLeft 10s linear infinite alternate; }
 
         /* 文字陰影增強可讀性 */
         .text-shadow-strong {
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 2px 5px rgba(0,0,0,0.8);
+        }
+
+        /* 優惠按鈕的緞帶剪裁缺口形狀 */
+        .ribbon-shape {
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
         }
     </style>
 </head>
 <body class="antialiased selection:bg-tripool selection:text-white">
 
-    <header class="w-full bg-white pt-6 pb-6 md:pt-8 md:pb-8">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+    <header class="w-full bg-white pt-6 pb-4 md:pt-10 md:pb-6">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
             
-            <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
-                <h2 class="text-xl md:text-2xl lg:text-3xl font-black text-tripool flex items-center tracking-widest">
-                    輕鬆旅行 <span class="text-tripool-yellow mx-2 text-2xl">✕</span> 美好時光
+            <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-5">
+                <h2 class="text-xl md:text-2xl lg:text-[28px] font-black text-tripool flex items-center tracking-widest">
+                    輕鬆旅行 <span class="text-tripool-yellow mx-2 lg:mx-3 text-[1.2em] font-light">✕</span> 美好時光
                 </h2>
-                <span class="bg-pinkBadge text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-bold tracking-widest shadow-sm">
+                <span class="bg-pinkBadge text-white px-4 py-1 rounded-full text-xs md:text-sm font-bold tracking-widest shadow-sm">
                     春季包車旅遊限定優惠
                 </span>
             </div>
@@ -85,39 +97,39 @@
             <div class="text-3xl md:text-4xl font-black text-tripool tracking-tighter">
                 Tripool
             </div>
-
         </div>
     </header>
 
-    <section class="max-w-7xl mx-auto px-4 md:px-8 relative pb-12">
+    <section class="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 relative pb-16">
         
-        <div class="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-[2rem] overflow-hidden shadow-2xl bg-gray-200">
+        <div class="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-gray-200">
             
             <div id="slider" class="absolute inset-0 w-full h-full">
-                <img src="girl.jpg" class="slide animate-pan-right absolute inset-0 w-full h-full object-cover opacity-100" alt="與好友共創美好回憶">
-                <img src="road.jpg" class="slide animate-pan-down absolute inset-0 w-full h-full object-cover opacity-0" alt="絕美沿途風景">
-                <img src="car.jpg" class="slide animate-zoom-in absolute inset-0 w-full h-full object-cover opacity-0" alt="tripool 舒適專車接送">
+                <img src="girlcamp.jpg" class="slide anim-pan-right absolute inset-0 w-full h-full object-cover opacity-100" alt="與好友共創美好回憶">
+                <img src="citygirl.jpg" class="slide anim-pan-down absolute inset-0 w-full h-full object-cover opacity-0" alt="老街城市散策">
+                <img src="seagirl.jpg" class="slide anim-zoom-out absolute inset-0 w-full h-full object-cover opacity-0" alt="絕美海岸秘境">
+                <img src="car.jpg" class="slide anim-pan-left absolute inset-0 w-full h-full object-cover opacity-0" alt="tripool 舒適專車接送">
             </div>
 
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10 pointer-events-none"></div>
 
-            <div class="absolute bottom-8 left-6 md:bottom-12 md:left-12 z-20">
+            <div class="absolute bottom-8 left-6 md:bottom-16 md:left-16 z-20 pointer-events-none">
                 <h1 class="text-white text-4xl md:text-5xl lg:text-7xl font-black leading-tight tracking-widest text-shadow-strong">
                     專屬包車旅遊<br>
                     享受美好時光
                 </h1>
             </div>
 
-            <a href="#booking" class="absolute top-8 md:top-12 right-0 bg-tripool-yellow text-white pl-5 pr-4 md:pl-6 md:pr-5 py-3 md:py-4 rounded-l-xl z-30 flex items-center shadow-lg hover:bg-yellow-600 transition-colors group cursor-pointer">
-                <div class="text-right mr-3 font-bold text-sm md:text-base leading-tight tracking-wider">
+            <a href="#booking" class="ribbon-shape absolute top-8 md:top-16 right-0 bg-tripool-yellow text-white pl-8 pr-5 py-3 md:pl-10 md:pr-6 md:py-4 z-30 flex items-center shadow-[0_10px_20px_rgba(0,0,0,0.3)] hover:bg-[#e0941c] transition-colors group cursor-pointer border-y border-l border-white/20">
+                <div class="text-right mr-3 md:mr-4 font-bold text-sm md:text-lg leading-tight tracking-widest drop-shadow-sm">
                     立刻前往<br>領取優惠
                 </div>
-                <i class="ph-fill ph-car-profile text-3xl md:text-4xl group-hover:scale-110 transition-transform"></i>
+                <i class="ph-fill ph-car-profile text-3xl md:text-4xl drop-shadow-sm group-hover:-translate-x-1 transition-transform"></i>
             </a>
             
         </div>
 
-        <div class="mt-4 md:mt-6 px-2 flex items-center text-gray-400 font-bold tracking-widest text-sm md:text-base">
+        <div class="mt-5 md:mt-8 px-2 md:px-4 flex items-center text-gray-400 font-bold tracking-widest text-sm md:text-base">
             <span class="text-tripool-yellow mr-2 text-lg">▶▶</span> Travel Freely, Collect Moments.
         </div>
 
@@ -192,14 +204,17 @@
             let currentSlide = 0;
 
             setInterval(() => {
+                // 淡出當前圖片
                 slides[currentSlide].classList.remove('opacity-100');
                 slides[currentSlide].classList.add('opacity-0');
                 
+                // 計算下一張圖片
                 currentSlide = (currentSlide + 1) % slides.length;
                 
+                // 淡入下一張圖片
                 slides[currentSlide].classList.remove('opacity-0');
                 slides[currentSlide].classList.add('opacity-100');
-            }, 5000); 
+            }, 6000); // 稍微延長到 6 秒換圖，讓單向動畫更有沉浸感
         });
     </script>
 </body>
